@@ -1,0 +1,52 @@
+<section class="section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h2 class="font-weight-bold mb-4" *ngIf="!id">Add Employee</h2>
+        <h2 class="font-weight-bold mb-4" *ngIf="id">Edit Employee</h2>
+        <form [formGroup]="addEmployeeForm" (ngSubmit)="onSubmit()" class="row">
+          <div class="col-lg-6 mb-3">
+            <input type="text" formControlName="firstname" class="form-control mb-2" id="firstname" name="firstname" placeholder="Your Name" required>
+            <div *ngIf="submitted && hasError('firstname','required')" class="error">
+              <div class="errormsg">
+                First Name is required.
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-3">
+            <input type="text" formControlName="lastname" class="form-control mb-2" id="lastname" name="lastname" placeholder="Your Last Name" required>
+            <div *ngIf="submitted && hasError('lastname','required')" class="error">
+              <div class="errormsg">
+                Name is required.
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-3">
+            <input type="email" formControlName="email" class="form-control mb-2" id="email" name="email" placeholder="Your Email" required>
+              <div *ngIf="submitted && hasEmailError('email','required')" class="error">
+                <div class="errormsg">
+                  {{hasEmailError('email','required')}}
+                </div>
+              </div>
+          </div>
+          <div class="col-lg-6 mb-3">
+            <input type="number" formControlName="phone_number" class="form-control mb-2" id="phone_number" name="phone_number" placeholder="Your Phone Number" required>
+            <div *ngIf="submitted && hasError('phone_number','required')" class="error">
+              <div class="errormsg">
+                Phone Number is required.
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-12 mb-3">
+            <textarea name="designation" formControlName="designation" id="designation" class="form-control mb-2" placeholder="Your Designation" required></textarea>
+          </div>
+          <div class="col-12 text-right">
+            <button type="submit" value="send" class="btn btn-success" *ngIf="!id">Save Employee</button>
+            <button type="submit" value="send" class="btn btn-success" *ngIf="id">Update Employee</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

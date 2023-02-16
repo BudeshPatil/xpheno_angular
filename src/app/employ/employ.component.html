@@ -1,0 +1,45 @@
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Employee Lists</h1>
+      <h1 class="fw-light"><button type="button" class="btn btn-success" [routerLink]="['/add-employee']" routerLinkActive="router-link-active">Add New Employee</button></h1>
+    </div>
+  </div>
+</section>
+
+<section class="emplylist">
+  <div class="py-5 text-center container">
+    <div class="row">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Sl No</th>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Designations</th>
+            <th scope="col">Status</th>
+            <th scope="col">Employ Id</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employeeList; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{employee.firstname}}</td>
+            <td>{{employee.lastname}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.phone_number}}</td>
+            <td>{{employee.designation}}</td>
+            <td>{{employee.status}}</td>
+            <td>{{employee.sequence_number}}</td>
+            <td><button type="button" class="btn btn-success" [routerLink]="['/add-employee',employee._id]" routerLinkActive="router-link-active" >Edit</button>
+              <button type="button" class="btn btn-danger" (click)="deleteEmployee(employee._id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
